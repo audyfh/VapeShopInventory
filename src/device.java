@@ -1,41 +1,23 @@
-public class device extends Barang{
+import java.io.Serializable;
+
+public class device extends Barang implements Serializable {
     private String namaBarang;
     private int stok;
     private String jenisDevice;
     private double harga;
     private String kodeBarang;
-    private boolean status;
+    private boolean status = true;
     private String warnaDevice;
 
 
 
-    public device(String namaBarang, int stok, String jenisDevice, String warnaDevice, double harga, String kodeBarang, boolean status) {
+    public device(String namaBarang, int stok, String jenisDevice, String warnaDevice, double harga, String kodeBarang) {
         this.namaBarang = namaBarang;
         this.stok = stok;
         this.jenisDevice = jenisDevice;
         this.warnaDevice = warnaDevice;
         this.harga = harga;
         this.kodeBarang = kodeBarang;
-        this.status = status;
-    }
-
-    public String getJenisDevice() {
-        return jenisDevice;
-    }
-
-    public void setJenisDevice(String jenisDevice) {
-        this.jenisDevice = jenisDevice;
-    }
-    public String getWarnaDevice() {
-        return warnaDevice;
-    }
-
-    public void setWarnaDevice(String warnaDevice) {
-        this.warnaDevice = warnaDevice;
-    }
-
-    public boolean isStatus() {
-        return status;
     }
 
     @Override
@@ -55,6 +37,15 @@ public class device extends Barang{
 
     @Override
     public void setStok(int stok) {
+        this.stok = stok;
+    }
+
+    public String getJenisDevice() {
+        return jenisDevice;
+    }
+
+    public void setJenisDevice(String jenisDevice) {
+        this.jenisDevice = jenisDevice;
     }
 
     @Override
@@ -74,22 +65,32 @@ public class device extends Barang{
 
     @Override
     public void setKodeBarang(String kodeBarang) {
+        this.kodeBarang = kodeBarang;
     }
 
     @Override
-    public boolean getStatus() {
-        if (status == true) {
-            System.out.println("Tersedia");
-        } else {
-            System.out.println("Tidak Tersedia");
-        }
-
+    public boolean isStatus() {
         return status;
     }
 
     @Override
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public String getWarnaDevice() {
+        return warnaDevice;
+    }
+
+    public void setWarnaDevice(String warnaDevice) {
+        this.warnaDevice = warnaDevice;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+
+                "\nJenis Device : "+getJenisDevice()+
+                "\nWarna Device : "+getWarnaDevice();
     }
 
     public void tampilkanDataBarang() {

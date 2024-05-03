@@ -1,20 +1,41 @@
-public class parts extends Barang{
+import java.io.Serializable;
+
+public class parts extends Barang implements Serializable {
     private String namaBarang;
     private int stok;
     private String jenisPart;
     private String merkPart;
     private double harga;
     private String kodeBarang;
-    private boolean status;
+    private boolean status = true;
 
-    public parts(String namaBarang, int stok, String jenisPart, String merkPart, double harga, String kodeBarang, boolean status) {
+    public parts(String namaBarang, int stok, String jenisPart, String merkPart, double harga, String kodeBarang) {
         this.namaBarang = namaBarang;
         this.stok = stok;
         this.jenisPart = jenisPart;
         this.merkPart = merkPart;
         this.harga = harga;
         this.kodeBarang = kodeBarang;
-        this.status = status;
+    }
+
+    @Override
+    public String getNamaBarang() {
+        return namaBarang;
+    }
+
+    @Override
+    public void setNamaBarang(String namaBarang) {
+        this.namaBarang = namaBarang;
+    }
+
+    @Override
+    public int getStok() {
+        return stok;
+    }
+
+    @Override
+    public void setStok(int stok) {
+        this.stok = stok;
     }
 
     public String getJenisPart() {
@@ -33,38 +54,14 @@ public class parts extends Barang{
         this.merkPart = merkPart;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    @Override
-    public String getNamaBarang() {
-        return namaBarang;
-    }
-
-    @Override
-    public void setNamaBarang(String namaBarang) {
-
-    }
-
-    @Override
-    public int getStok() {
-        return 0;
-    }
-
-    @Override
-    public void setStok(int stok) {
-
-    }
-
     @Override
     public double getHarga() {
-        return 0;
+        return harga;
     }
 
     @Override
     public void setHarga(double harga) {
-
+        this.harga = harga;
     }
 
     @Override
@@ -74,23 +71,24 @@ public class parts extends Barang{
 
     @Override
     public void setKodeBarang(String kodeBarang) {
-
+        this.kodeBarang = kodeBarang;
     }
 
     @Override
-    public boolean getStatus() {
-        if (status == true) {
-            System.out.println("Tersedia");
-        } else {
-            System.out.println("Tidak Tersedia");
-        }
-
+    public boolean isStatus() {
         return status;
     }
 
     @Override
     public void setStatus(boolean status) {
+        this.status = status;
+    }
 
+    @Override
+    public String toString() {
+        return super.toString()+
+                "\nJenis : "+getJenisPart()+
+                "\nMerk : "+getMerkPart();
     }
 
     public void tampilkanDataBarang() {

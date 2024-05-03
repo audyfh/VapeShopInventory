@@ -1,27 +1,64 @@
-public abstract class Barang {
+import java.io.Serializable;
+
+public  class Barang implements Serializable {
     private String namaBarang;
     private int stok;
     private double harga;
     private String kodeBarang;
-    private boolean status;
+    private boolean status = true;
 
-    abstract public String getNamaBarang();
+    public String getNamaBarang() {
+        return namaBarang;
+    }
 
-    abstract public void setNamaBarang(String namaBarang);
+    public void setNamaBarang(String namaBarang) {
+        this.namaBarang = namaBarang;
+    }
 
-    abstract public int getStok();
+    public int getStok() {
+        return stok;
+    }
 
-    abstract public void setStok(int stok);
+    public void setStok(int stok) {
+        this.stok = stok;
+    }
 
-    abstract public double getHarga();
+    public double getHarga() {
+        return harga;
+    }
 
-    abstract public void setHarga(double harga);
+    public void setHarga(double harga) {
+        this.harga = harga;
+    }
 
-    abstract public String getKodeBarang();
+    public String getKodeBarang() {
+        return kodeBarang;
+    }
 
-    abstract public void setKodeBarang(String kodeBarang);
+    public void setKodeBarang(String kodeBarang) {
+        this.kodeBarang = kodeBarang;
+    }
 
-    abstract public boolean getStatus();
+    public boolean isStatus() {
+        return status;
+    }
 
-    abstract public void setStatus(boolean status);
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        String status;
+        if (isStatus()){
+            status = "Tersedia";
+        } else status = "Kosong";
+        return "----------------------------------------"+
+                "\nNama Barang : "+getNamaBarang()+
+                "\nStok : "+getStok()+
+                "\nHarga : "+getHarga()+
+                "\nKode Barang : "+getKodeBarang()+
+                "\nStatus : "+status;
+
+    }
 }
