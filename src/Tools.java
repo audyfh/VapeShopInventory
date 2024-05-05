@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Tools {
-    static void tambahBarang(Scanner in, Barang[] arrayBrg){
+    public static void tambahBarang(Scanner in, Barang[] arrayBrg){
         System.out.println("Pilih Kategori : ");
         System.out.println("1. Liquid");
         System.out.println("2. Device");
@@ -74,7 +74,7 @@ public class Tools {
             System.out.println("Barang Telah Ditambahkan!");
         } else System.out.println("Gagal!");
     }
-    static void hapusBarang(Barang[] arrayBrg,Scanner in){
+    public static void hapusBarang(Barang[] arrayBrg,Scanner in){
         printBarang(arrayBrg);
         System.out.println("Masukkan index barang yang ingin dihapus : ");
         int index = in.nextInt();
@@ -88,7 +88,7 @@ public class Tools {
             } else System.out.println("Tidak ada barang!");
         } else System.out.println("Masukkan index barang yang valid!");
     }
-    static void ubahStok(Barang[] arrayBrg, Scanner in){
+    public static void ubahStok(Barang[] arrayBrg, Scanner in){
         printBarang(arrayBrg);
         System.out.println("Masukkan index barang yang ingin dirubah");
         int index = in.nextInt();
@@ -102,7 +102,7 @@ public class Tools {
         } else System.out.println("Masukkan index barang yang valid!");
     }
 
-    static void ubahHarga(Barang[] arrayBrg,Scanner in){
+    public static void ubahHarga(Barang[] arrayBrg,Scanner in){
         printBarang(arrayBrg);
         System.out.println("Masukkan index barang yang ingin dirubah");
         int index = in.nextInt();
@@ -115,7 +115,7 @@ public class Tools {
             } else System.out.println("Tidak ada Barang!");
         } else System.out.println("Masukkan index barang yang valid!");
     }
-    static void ubahStatus(Barang[] arrayBrg,Scanner in){
+    public static void ubahStatus(Barang[] arrayBrg,Scanner in){
         printBarang(arrayBrg);
         System.out.println("Masukkan index barang yang ingin dirubah");
         int index = in.nextInt();
@@ -128,7 +128,7 @@ public class Tools {
             } else System.out.println("Tidak Ada Barang!");
         } else System.out.println("Masukkan index barang yang valid!");
     }
-    static void printMenu(){
+    public static void printMenu(){
         System.out.println("=================================");
         System.out.println("Vape Shop Inventory");
         System.out.println("1. Tambah Barang");
@@ -141,7 +141,7 @@ public class Tools {
         System.out.println("0. Keluar");
         System.out.println("Masukkan Pilihan Anda : ");
     }
-    static void printBarang(Barang[] arrayBarang){
+    public static void printBarang(Barang[] arrayBarang){
         int index = 0;
         for (Barang bg : arrayBarang){
             if (bg!=null) {
@@ -153,7 +153,7 @@ public class Tools {
         }
     }
 
-    static void cariBarang(Barang[] arrayBarang, Scanner in){
+    public static void cariBarang(Barang[] arrayBarang, Scanner in){
         System.out.println("Masukkan Kode atau Nama barang yang ingin dicari : ");
         String find = in.next();
         for (Barang barang : arrayBarang) {
@@ -164,7 +164,7 @@ public class Tools {
         }
     }
 
-    static void Start(){
+    public static void Start(){
         Scanner in = new Scanner(System.in);
         Barang[] arrayBrg = load("Stock.txt");
         int pilih;
@@ -188,7 +188,7 @@ public class Tools {
         save(arrayBrg,"Stock.txt");
     }
 
-    static Barang[] load(String file){
+    public static Barang[] load(String file){
         Barang[] arrayBarang = new Barang[25];
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
             arrayBarang = (Barang[]) objectInputStream.readObject();
@@ -198,7 +198,7 @@ public class Tools {
         return arrayBarang;
     }
 
-    static void save(Barang[] arrayBarang, String file){
+    public static void save(Barang[] arrayBarang, String file){
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
             oos.writeObject(arrayBarang);
         } catch (IOException e) {
