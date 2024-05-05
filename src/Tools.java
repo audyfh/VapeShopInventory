@@ -1,6 +1,4 @@
-import javax.management.openmbean.ArrayType;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Tools {
@@ -99,6 +97,7 @@ public class Tools {
         if (index>=0 && index< arrayBrg.length ){
             if (arrayBrg[index]!=null) {
                 arrayBrg[index].setStok(value);
+                System.out.println("Stok berhasil dirubah");
             } else System.out.println("Tidak ada Barang!");
         } else System.out.println("Masukkan index barang yang valid!");
     }
@@ -112,6 +111,7 @@ public class Tools {
         if (index>=0 && index< arrayBrg.length ){
             if (arrayBrg[index]!=null) {
                 arrayBrg[index].setHarga(value);
+                System.out.println("Harga berhasil dirubah");
             } else System.out.println("Tidak ada Barang!");
         } else System.out.println("Masukkan index barang yang valid!");
     }
@@ -124,6 +124,7 @@ public class Tools {
                 if (arrayBrg[index].isStatus()) {
                     arrayBrg[index].setStatus(false);
                 } else arrayBrg[index].setStatus(true);
+                System.out.println("Status berhasil dirubah");
             } else System.out.println("Tidak Ada Barang!");
         } else System.out.println("Masukkan index barang yang valid!");
     }
@@ -154,11 +155,12 @@ public class Tools {
 
     static void cariBarang(Barang[] arrayBarang, Scanner in){
         System.out.println("Masukkan Kode atau Nama barang yang ingin dicari : ");
-        String find = in.nextLine();
+        String find = in.next();
         for (Barang barang : arrayBarang) {
             if (barang!=null&&(find.equalsIgnoreCase(barang.getKodeBarang()) || find.equalsIgnoreCase(barang.getNamaBarang()))) {
                 System.out.println(barang);
-            }
+                break;
+            } else System.out.println("Barang tidak ada");
         }
     }
 
